@@ -7,7 +7,7 @@ export default function VortexBackground({ reverse = false }: { reverse?: boolea
   // Generate an array of path data objects for the vortex effect
   const paths = useMemo(() => Array.from({ length: 150 }, (_, i) => {
     const startAngle = Math.random() * Math.PI * 2; 
-    const startRadius = 300 + Math.random() * 300; 
+    const startRadius = 300 + Math.random() * 600; 
 
     // Calculate the starting point of the path
     const startX = 500 + startRadius * Math.cos(startAngle);
@@ -32,17 +32,17 @@ export default function VortexBackground({ reverse = false }: { reverse?: boolea
       d: reverse 
         ? `M ${endX} ${endY} C ${cp2x} ${cp2y}, ${cp1x} ${cp1y}, ${startX} ${startY}`
         : `M ${startX} ${startY} C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${endX} ${endY}`,
-      width: 0.2 + Math.random() * 0.8,
-      opacity: 0.05 + Math.random() * 0.3,
-      duration: 5 + Math.random() * 10,
+      width: 0.2 + Math.random() * 0.5,
+      opacity: 0.02 + Math.random() * 0.1, // Dimmed
+      duration: 10 + Math.random() * 15, // Slower, more fluid
       delay: Math.random() * 10,
     };
   }), [reverse]);
 
   return (
-    <div className="absolute inset-0 pointer-events-none z-0">
+    <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
       <svg
-        className="w-full h-full text-zinc-400"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200vw] h-[200vh] text-zinc-500"
         viewBox="0 0 1000 600"
         fill="none"
         preserveAspectRatio="xMidYMid slice"
@@ -51,8 +51,8 @@ export default function VortexBackground({ reverse = false }: { reverse?: boolea
           <radialGradient id="vortexGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
             <stop offset="0%" stopColor="rgba(0,0,0,1)" />
             <stop offset="20%" stopColor="rgba(5,5,5,1)" />
-            <stop offset="60%" stopColor="rgba(15,15,20,0.8)" />
-            <stop offset="100%" stopColor="rgba(15,15,20,0)" />
+            <stop offset="60%" stopColor="rgba(10,10,12,0.8)" />
+            <stop offset="100%" stopColor="rgba(10,10,12,0)" />
           </radialGradient>
         </defs>
 
@@ -69,7 +69,7 @@ export default function VortexBackground({ reverse = false }: { reverse?: boolea
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{
               pathLength: 1,
-              opacity: [0, 1, 0], 
+              opacity: [0, 0.5, 0], 
             }}
             transition={{
               duration: path.duration,

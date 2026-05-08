@@ -14,9 +14,9 @@ export default function Slide7_Close({ step }: { step: number }) {
         <div className="relative z-10 flex flex-col items-center justify-center text-center h-full px-4">
           
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.2 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 2, ease: "easeOut" }}
           >
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8">
               Let's build something remarkable.
@@ -26,17 +26,18 @@ export default function Slide7_Close({ step }: { step: number }) {
           <AnimatePresence>
             {step >= 1 && (
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, filter: "blur(10px)", y: 10 }}
+                animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+                transition={{ duration: 1.5, ease: "easeOut" }}
                 className="max-w-2xl"
               >
                 <p className="text-xl text-zinc-400 font-light leading-relaxed mb-12">
                   We are looking for builders, thinkers, and people who want to own what they create.
                 </p>
                 <div className="grid grid-cols-3 gap-6 text-sm font-bold tracking-widest uppercase text-zinc-500">
-                  <span>Autonomy</span>
-                  <span>Impact</span>
-                  <span>Upside</span>
+                  <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5, duration: 1 }}>Autonomy</motion.span>
+                  <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.0, duration: 1 }}>Impact</motion.span>
+                  <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5, duration: 1 }}>Upside</motion.span>
                 </div>
               </motion.div>
             )}

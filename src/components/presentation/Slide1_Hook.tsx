@@ -11,11 +11,11 @@ export default function Slide1_Hook({ step }: { step: number }) {
       <SlideContainer>
         <div className="relative z-10 flex flex-col items-center justify-center text-center h-full px-4">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
           >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-zinc-500">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-6 text-white">
               Lumix Design
             </h1>
             <p className="text-xl md:text-2xl text-zinc-400 font-light max-w-2xl mx-auto">
@@ -26,16 +26,16 @@ export default function Slide1_Hook({ step }: { step: number }) {
           <AnimatePresence mode="wait">
             {step >= 1 && (
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.8 }}
+                initial={{ opacity: 0, filter: "blur(10px)" }}
+                animate={{ opacity: 1, filter: "blur(0px)" }}
+                exit={{ opacity: 0, filter: "blur(10px)" }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
                 className="mt-16 max-w-3xl"
               >
                 <p className="text-lg md:text-xl text-zinc-300 font-light italic leading-relaxed">
                   "Most small businesses are forced to choose between <span className="text-white font-medium">expensive agencies</span> that overcharge, or <span className="text-white font-medium">generic templates</span> that fail to convert."
                 </p>
-                <div className="mt-8 h-px w-24 bg-gradient-to-r from-transparent via-zinc-500 to-transparent mx-auto" />
+                <div className="mt-8 h-px w-24 bg-gradient-to-r from-transparent via-zinc-500 to-transparent mx-auto opacity-50" />
               </motion.div>
             )}
           </AnimatePresence>
