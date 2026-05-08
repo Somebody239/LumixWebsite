@@ -227,7 +227,16 @@ Please call me to confirm this 30-minute strategy consultation.`;
       const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
       if (serviceId && templateId && publicKey) {
-        await emailjs.send(serviceId, templateId, templateParams, publicKey);
+        // Add 5-second timeout for emailjs to prevent hanging
+        const timeoutPromise = new Promise((_, reject) => 
+          setTimeout(() => reject(new Error('EmailJS request timed out')), 5000)
+        );
+        
+        await Promise.race([
+          emailjs.send(serviceId, templateId, templateParams, publicKey),
+          timeoutPromise
+        ]);
+        
         return { success: true, method: 'EmailJS' };
       } else {
         // Fallback: Use mailto link
@@ -303,7 +312,7 @@ Please call the customer to confirm this 30-minute strategy consultation.`;
 
       setStatus("success");
 
-      // Reset form after 10 seconds (longer to give time for SMS sending)
+      // Reset form after 5 seconds
       setTimeout(() => {
         setFormData({
           name: "",
@@ -316,7 +325,7 @@ Please call the customer to confirm this 30-minute strategy consultation.`;
         setCurrentStep(1);
         setStepErrors({});
         setStatus("idle");
-      }, 10000);
+      }, 5000);
     } catch (error) {
       console.error('Failed to submit booking:', error);
       setStatus("idle");

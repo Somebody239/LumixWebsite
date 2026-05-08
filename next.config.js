@@ -31,12 +31,6 @@ const nextConfig = {
       },
     ],
   },
-  typescript: {
-    // !! WARN !!
-    // Ignoring build errors for deployment,
-    // but we should fix them properly in development
-    ignoreBuildErrors: true,
-  },
 };
 
 module.exports = nextConfig;

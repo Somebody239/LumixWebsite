@@ -75,7 +75,7 @@ export default function Slide4_Technical({ step }: { step: number }) {
                         transition={{ delay: 0.8, duration: 1.2, ease: "easeOut" }}
                         className="text-zinc-600"
                       >
-                        // The technical moat is our speed to delivery.
+                        {"// The technical moat is our speed to delivery."}
                       </motion.p>
                     </div>
                   </motion.div>

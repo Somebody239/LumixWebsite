@@ -84,7 +84,7 @@ export function useScroll({
     window.addEventListener('scroll', handleScroll, options);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll, options);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, [handleScroll, passive, threshold]);
 

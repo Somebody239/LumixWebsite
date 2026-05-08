@@ -56,7 +56,7 @@ export function useIntersection<T extends Element = HTMLDivElement>(
     }
 
     // Create new observer with the given options
-    const observerInstance = new IntersectionObserver([updateEntry], {
+    const observerInstance = new IntersectionObserver(updateEntry, {
       root,
       rootMargin,
       threshold,
