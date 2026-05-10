@@ -24,13 +24,10 @@ export default function Slide2_Problem({ step }: { step: number }) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 w-full mt-4 items-stretch">
             {/* Left: Traditional Agencies */}
             <div className="relative h-full">
-              <AnimatePresence>
-                {step >= 1 && (
                   <motion.div
                     initial={{ opacity: 0, filter: "blur(10px)", y: 10 }}
                     animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
                     className="h-full bg-zinc-950 rounded-2xl p-8 md:p-10 border border-zinc-800 shadow-xl flex flex-col"
                   >
                     <div className="w-12 h-12 bg-zinc-900 border border-zinc-800 text-white rounded-full flex items-center justify-center mb-6">
@@ -55,19 +52,14 @@ export default function Slide2_Problem({ step }: { step: number }) {
                       <p className="text-sm font-medium text-zinc-500">Result: <span className="text-white">Inaccessible to small businesses.</span></p>
                     </div>
                   </motion.div>
-                )}
-              </AnimatePresence>
             </div>
 
             {/* Right: DIY Builders */}
             <div className="relative h-full">
-              <AnimatePresence>
-                {step >= 2 && (
                   <motion.div
                     initial={{ opacity: 0, filter: "blur(10px)", y: 10 }}
                     animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
                     className="h-full bg-zinc-950 rounded-2xl p-8 md:p-10 border border-zinc-800 shadow-xl flex flex-col"
                   >
                     <div className="w-12 h-12 bg-zinc-900 border border-zinc-800 text-white rounded-full flex items-center justify-center mb-6">
@@ -92,10 +84,37 @@ export default function Slide2_Problem({ step }: { step: number }) {
                       <p className="text-sm font-medium text-zinc-500">Result: <span className="text-white">Low conversion rates and brand damage.</span></p>
                     </div>
                   </motion.div>
-                )}
-              </AnimatePresence>
             </div>
           </div>
+
+          <AnimatePresence>
+            {step >= 1 && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className="absolute inset-0 z-20 flex items-center justify-center p-4"
+              >
+                {/* Backdrop blur */}
+                <div className="absolute inset-0 bg-black/60 backdrop-blur-md" />
+                
+                {/* Content */}
+                <div className="relative bg-zinc-900 border border-zinc-700 rounded-2xl p-10 max-w-2xl text-center shadow-2xl">
+                  <h3 className="text-3xl font-bold mb-4 text-white">The Third Option</h3>
+                  <p className="text-xl text-zinc-300 mb-6">
+                    For small businesses on tight budgets, neither option is realistic. So they choose <span className="text-white font-medium">no website at all</span>.
+                  </p>
+                  <div className="bg-red-950/50 border border-red-900/50 rounded-xl p-6">
+                    <p className="text-2xl font-bold text-red-400">
+                      Leading to a potential loss of <span className="text-white">4 out of every 5</span> customers.
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
         </div>
       </SlideContainer>
     </div>

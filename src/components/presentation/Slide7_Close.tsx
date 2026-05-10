@@ -1,47 +1,34 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import SlideContainer from "./shared/SlideContainer";
 import VortexBackground from "./shared/VortexBackground";
 
 export default function Slide7_Close({ step }: { step: number }) {
   return (
-    <div className="relative w-full h-full bg-black text-white overflow-hidden">
-      {/* Passing reverse to make the vortex expand instead of contract */}
-      <VortexBackground reverse />
-      
+    <div className="relative w-full h-full bg-black text-white overflow-hidden flex items-center justify-center">
+      <VortexBackground />
       <SlideContainer>
-        <div className="relative z-10 flex flex-col items-center justify-center text-center h-full px-4">
+        <div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center justify-center h-full">
           
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            layout
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 2, ease: "easeOut" }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="text-center"
           >
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8">
-              Let's build something remarkable.
-            </h1>
+            <div className="w-24 h-24 rounded-full bg-white text-black flex items-center justify-center text-4xl font-black tracking-tighter mx-auto mb-8 shadow-[0_0_100px_rgba(255,255,255,0.3)]">
+              Lx
+            </div>
+            <h2 className="text-5xl md:text-8xl font-bold tracking-tighter text-white mb-6">
+              Thank You.
+            </h2>
+            <p className="text-xl md:text-2xl text-zinc-400 font-light">
+              Questions?
+            </p>
           </motion.div>
 
-          <AnimatePresence>
-            {step >= 1 && (
-              <motion.div
-                initial={{ opacity: 0, filter: "blur(10px)", y: 10 }}
-                animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-                transition={{ duration: 1.5, ease: "easeOut" }}
-                className="max-w-2xl"
-              >
-                <p className="text-xl text-zinc-400 font-light leading-relaxed mb-12">
-                  We are looking for builders, thinkers, and people who want to own what they create.
-                </p>
-                <div className="grid grid-cols-3 gap-6 text-sm font-bold tracking-widest uppercase text-zinc-500">
-                  <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5, duration: 1 }}>Autonomy</motion.span>
-                  <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.0, duration: 1 }}>Impact</motion.span>
-                  <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5, duration: 1 }}>Upside</motion.span>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
         </div>
       </SlideContainer>
     </div>

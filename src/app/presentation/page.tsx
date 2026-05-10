@@ -14,13 +14,13 @@ import Slide7_Close from "@/components/presentation/Slide7_Close";
 
 // Configure slides and their steps
 const slideConfig = [
-  { component: Slide1_Hook, totalSteps: 1 },
-  { component: Slide2_Problem, totalSteps: 2 },
-  { component: Slide3_Solution, totalSteps: 5 },
-  { component: Slide4_Technical, totalSteps: 4 },
-  { component: Slide5_Economics, totalSteps: 4 },
-  { component: Slide6_Risks, totalSteps: 3 },
-  { component: Slide7_Close, totalSteps: 1 },
+  { component: Slide1_Hook, totalSteps: 0 },
+  { component: Slide2_Problem, totalSteps: 1 },
+  { component: Slide3_Solution, totalSteps: 0 },
+  { component: Slide4_Technical, totalSteps: 0 },
+  { component: Slide5_Economics, totalSteps: 0 },
+  { component: Slide6_Risks, totalSteps: 0 },
+  { component: Slide7_Close, totalSteps: 0 },
 ];
 
 export default function PresentationPage() {

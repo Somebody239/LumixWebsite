@@ -1,9 +1,15 @@
 "use client";
 
-import React, { useMemo } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 export default function VortexBackground({ reverse = false }: { reverse?: boolean }) {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   // Generate an array of path data objects for the vortex effect
   const paths = useMemo(() => Array.from({ length: 150 }, (_, i) => {
     const startAngle = Math.random() * Math.PI * 2; 
@@ -59,7 +65,7 @@ export default function VortexBackground({ reverse = false }: { reverse?: boolea
         <circle cx="500" cy="300" r="100" fill="url(#vortexGradient)" />
         <circle cx="500" cy="300" r="3" fill="black" />
 
-        {paths.map((path) => (
+        {isMounted && paths.map((path) => (
           <motion.path
             key={path.id}
             d={path.d}
